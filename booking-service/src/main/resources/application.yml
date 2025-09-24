@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: booking-service
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/FREE
+    username: SYSTEM
+    password: admin
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  security:
+      user:
+        password: Test12345#
+
+
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#  api-docs:
+#    enabled: true
+#    path: /v3/api-docs
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+
+server:
+  port: 8087

@@ -1,7 +1,7 @@
-package com.mymoviekart.theatrepartner.entity;
+package com.mymoviekart.booking.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.mymoviekart.theatrepartner.enumeration.SeatAvailStatus;
+import com.mymoviekart.booking.enumeration.SeatAvailStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +24,7 @@ public class SeatEntity {
     @Column(name = "SEAT_NUMBER", nullable = false)
     private int seatNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "SEAT_AVAIL_STATUS")
     private SeatAvailStatus seatAvailStatus;
 
