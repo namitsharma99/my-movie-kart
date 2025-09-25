@@ -1,16 +1,13 @@
 spring:
   application:
-    name: theatre-partner-service
+    name: notification-service
   datasource:
     url: jdbc:oracle:thin:@localhost:1521/FREE
     username: SYSTEM
     password: admin
     driver-class-name: oracle.jdbc.driver.OracleDriver
-  jpa:
-    hibernate:
-      ddl-auto: update
   kafka:
-    bootstrap-servers: 127.0.0.1:9092
+    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -34,4 +31,4 @@ springdoc:
     enabled: true
 
 server:
-  port: 8085
+  port: 8088

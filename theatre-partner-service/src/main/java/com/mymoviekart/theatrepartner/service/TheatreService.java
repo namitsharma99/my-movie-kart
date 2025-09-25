@@ -22,6 +22,9 @@ public class TheatreService {
     @Autowired
     private PartnerRepository partnerRepository;
 
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
+
     public List<TheatreResponseDto> getAllTheatreByPartnerId(Long partnerid) {
         TheatreDtoEntityMapper mapper = Mappers.getMapper(TheatreDtoEntityMapper.class);
         return mapper.toDto(theatreRepository.findByPartnerId(partnerid));
@@ -32,6 +35,7 @@ public class TheatreService {
         return mapper.toDto(theatreRepository.findById(theatreid).orElse(null));
     }
 
+
     public TheatreResponseDto createTheatre(TheatreRequestDto theatreRequestDto) throws Exception {
         Long partnerId = theatreRequestDto.partnerId();
         PartnerEntity partnerEntity = partnerRepository.findById(partnerId).orElse(null);
@@ -41,8 +45,12 @@ public class TheatreService {
 
         TheatreDtoEntityMapper mapper = Mappers.getMapper(TheatreDtoEntityMapper.class);
         TheatreEntity theatreEntity = mapper.toEntity(theatreRequestDto);
-        // theatreEntity.setActive(false);
+
         TheatreEntity persistedTheatreEntity = theatreRepository.save(theatreEntity);
+
+        String notificationMessage = "Partner ID: " + partnerId + " | Theatre ID: " + persistedTheatreEntity.getId();
+        kafkaProducerService.sendMessage("mmk", notificationMessage);
+
         return mapper.toDto(persistedTheatreEntity);
     }
 }
