@@ -12,6 +12,12 @@ spring:
   security:
     user:
       password: Test12345#
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3
 
 springdoc:
   api-docs:
@@ -21,4 +27,4 @@ springdoc:
     enabled: true
 
 server:
-  port: 8086
+  port: 8099

@@ -18,13 +18,9 @@ spring:
       group-id: mmk
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
-#springdoc:
-#  swagger-ui:
-#    path: /swagger-ui.html
-#  api-docs:
-#    enabled: true
-#    path: /v3/api-docs
+  security:
+    user:
+      password: Test12345#
 
 springdoc:
   api-docs:
