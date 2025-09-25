@@ -17,7 +17,7 @@ spring:
       base-url: http://localhost:11434
       chat:
         options:
-          model: llama3
+          model: llama3.2:latest
 
 springdoc:
   api-docs:
